@@ -1,0 +1,96 @@
+//------------------------------------------------------------------------------
+//	Global Footer Styles
+//------------------------------------------------------------------------------
+
+.contact-content{
+	overflow: hidden;
+	position: relative;
+	background: $purple;
+	text-align: center;
+	color: $white;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: none;
+
+	.container{
+		z-index: 100;
+	}
+
+	h2{
+		@include rem(font-size, 5rem);
+		color: $white;
+		margin: 0 0 1em 0;
+	}
+
+	.button{
+		margin-top: 3em;
+	}
+
+	video{
+		display: none;
+	}
+
+	@media screen and (min-width: 46em){
+		video{
+			display: block;
+			height: auto;
+	    left: 0;
+	    position: absolute;
+	    top: 0;
+	    width: 100%;
+		}
+	}
+}
+
+.copyright{
+	background: $purple;
+	color: $white;
+	padding: 0;
+	margin: 0;
+
+	ul{
+		text-align: center;
+		padding-top: 10px;
+	}
+
+	#makespace-bee{
+		display: block;
+		margin: 0 auto;
+	}
+
+	a{
+		color: $gold;
+	}
+
+	@media screen and (min-width:46em){
+		ul{
+			width: 80%;
+			text-align: left;
+			float: left;
+
+			li{
+				display: inline-block;
+
+				&:first-child,
+				&:last-child{
+					padding-right: 10px;
+
+					&:after{
+						display: none;
+					}
+				}
+
+				&:after{
+					content: '|';
+					color: $white;
+					display: inline-block;
+					padding: 0 5px;
+				}
+			}
+		}
+
+		#makespace-bee{
+			float: right;
+		}
+	}
+}

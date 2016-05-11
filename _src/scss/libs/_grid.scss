@@ -1,0 +1,57 @@
+//------------------------------------------------------------------------------
+//	Grid Defaults - 1440px Wide
+//------------------------------------------------------------------------------
+
+$column-width: 80px;
+$gutter-width: 40px;
+$columns: 12;
+$max-width: 1200px;
+$total-width: 100%;
+
+
+.container{
+	display: block;
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 20px;
+
+  @media screen and (min-width: 40em){
+    padding: 20px 60px;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Utility function — you should never need to modify this
+//------------------------------------------------------------------------------
+
+@function gridsystem-width($columns:$columns) {
+  @return ($column-width * $columns) + ($gutter-width * $columns);
+}
+
+//------------------------------------------------------------------------------
+//  Floated Layout
+//------------------------------------------------------------------------------
+
+@mixin row{
+  @include clearfix();
+  display: block;
+  width: $total-width;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@mixin column($x,$columns:$columns) {
+  display: inline-block;
+  float: left;
+  width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns));
+  margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
+
+@mixin push($offset:1) {
+  margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
+
+@mixin pull($offset:1) {
+  margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}

@@ -1,0 +1,150 @@
+//------------------------------------------------------------------------------
+//  Global Header Styles
+//------------------------------------------------------------------------------
+
+.floating{
+	position: fixed;
+	display: block;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+.top{
+	height: 35vh;
+	background: linear-gradient($purple, darken($purple, 20%));
+	background-size: cover;
+	background-position: center center;
+	background-repeat: none;
+
+	.container{
+		padding: 20px;
+	}
+}
+
+@media screen and (min-width: 46em){
+	.home .top{
+		height: 50vh;
+	}
+}
+
+
+.menu-container{
+	@include clearfix();
+	background: $purple-faded;
+	position: relative;
+
+	.menu{
+		@extend .rubik;
+		@include uppercase();
+		display: none;
+
+		.telephone{
+			a{
+				color: $gold;
+			}
+		}
+
+		@media screen and (min-width: 60em){
+			display: block;
+			list-style-type: none;
+			text-align: center;
+
+			li{
+				display: inline-block;
+				position: relative;
+
+				ul{
+					display: none;
+					visibility: visible;
+					opacity: 0;
+					position: absolute;
+					width: 300px;
+					background: $purple-faded;
+					@include transition-short();
+
+					li{
+						display: block;
+						position: relative;
+						width: 100%;
+						text-align: left;
+						border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+
+						&.menu-item-has-children{
+							ul{
+								display: block;
+								visibility: none;
+								opacity: 0;
+								position: absolute;
+								left: 300px;
+								top: 0;
+								@include transition-short();
+							}
+
+							&:hover{
+								ul{
+									visibility: visible;
+									opacity: 1;
+								}
+							}
+						}
+					}
+				}
+
+				&:hover{
+					ul{
+						display: block;
+						visibility: visible;
+						opacity: 1;
+					}
+				}
+
+				a{
+					color: $white;
+					display: block;
+					padding: 15px 35px;
+
+					&:hover{
+						text-decoration: none;
+						color: $gold;
+					}
+				}
+			}
+		}
+	}
+}
+
+#ocn{
+	background: $purple-faded;
+}
+
+#ocn-nav-primary{
+	font-family: 'Rubik', sans-serif;
+
+	li{
+		a{
+			color: $white;
+		}
+
+		li{
+			padding-left: 25px;
+		}
+	}
+}
+#nav-toggle{
+	margin: 10px;
+
+	&:before{
+		content:'Menu';
+		display: block;
+		@include uppercase();
+		color: $gold;
+		position: absolute;
+		left: -70px;
+		top: 6px;
+	}
+
+	@media screen and (min-width:60em){
+		display: none;
+	}
+}

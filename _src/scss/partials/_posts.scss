@@ -1,0 +1,33 @@
+//------------------------------------------------------------------------------
+//	Post Settings
+//------------------------------------------------------------------------------
+
+.post{
+
+	.button{
+		margin-top: 1em;
+	}
+
+	h3{
+		color: $gold;
+		margin: 0 0 1.5em 0;
+	}
+
+	@media screen and (min-width:40em){
+
+		&-content,
+		&-image{
+			display: block;
+			float: right;
+		}
+
+		&-content{
+			width: 40%;
+			margin-right: 5%;
+		}
+
+		&-image{
+			width: 55%;
+		}
+	}
+}

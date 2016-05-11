@@ -1,0 +1,98 @@
+//------------------------------------------------------------------------------
+//	Base Typography
+//------------------------------------------------------------------------------
+
+@import url(https://fonts.googleapis.com/css?family=Karma:400,600|Rubik:300,400|Dosis:600,400);
+
+html{
+	font-size: 62.5%;
+}
+
+body{
+	font-family: 'Karma', serif;
+	font-weight: 400;
+	color: $body;
+	-webkit-font-smoothing: antialiased;
+	@include rem(font-size, 1.6rem);
+	line-height: 1.5;
+}
+
+.center{
+	text-align: center;
+}
+
+.rubik{
+	font-family: 'Rubik', sans-serif;
+}
+
+.dosis{
+	font-family: 'Dosis', sans-serif;
+}
+
+p{
+	padding-bottom: .875em;
+}
+
+ul,
+ol{
+	padding: 0 0 20px 30px;
+}
+
+b,
+strong{
+	font-weight: 700;
+}
+
+em,
+i{
+	font-style: italic;
+}
+
+a{
+	text-decoration: none;
+	color: $purple;
+	@include transition-short();
+
+	&:hover{
+		text-decoration: underline;
+		color: $gold;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	@extend .dosis;
+	color: $purple;
+	line-height: 1.25;
+	font-weight: 600;
+	margin: 1.5em 0 .5em 0;
+}
+
+h1{
+	@include rem(font-size, 4rem);
+	@include uppercase();
+}
+
+h2{
+	@include rem(font-size, 2.8rem);
+}
+
+h3{
+	@include rem(font-size, 2.4rem);
+}
+
+h4{
+	@include rem(font-size, 2.2rem);
+}
+
+h5{
+	@include rem(font-size, 2rem);
+}
+
+h6{
+	@include rem(font-size, 1.8rem);
+}
