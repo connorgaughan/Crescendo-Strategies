@@ -6,3 +6,41 @@ body {
 	width: 100%;
 	position: relative;
 }
+
+.video-container{
+	overflow: hidden;
+	position: relative;
+	background: $purple;
+	text-align: center;
+	color: $white;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: none;
+
+	.container{
+		z-index: 100;
+	}
+}
+
+video{
+	display: none;
+}
+
+@media (max-aspect-ratio: 16/9){
+	video {
+	    left: -100%;
+	    width: 300%;
+	}
+}
+
+@media screen and (min-width: 46em){
+	video{
+		display: block;
+		height: auto;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+	}
+}
+

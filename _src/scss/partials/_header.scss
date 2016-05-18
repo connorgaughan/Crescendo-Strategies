@@ -1,7 +1,6 @@
 //------------------------------------------------------------------------------
 //  Global Header Styles
 //------------------------------------------------------------------------------
-
 .floating{
 	position: fixed;
 	display: block;
@@ -16,6 +15,7 @@
 	background-size: cover;
 	background-position: center center;
 	background-repeat: none;
+	position: relative;
 
 	.container{
 		padding: 20px;

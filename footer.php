@@ -2,14 +2,32 @@
 			<?php
 				// Set up contact variables for the footer
 				$yesToFooter 					= get_field('include_footer');
-				$testimonial 					= get_field('select_a_testimonial');
+				$yesToTestimonial 		= get_field('include_a_testimonial');
+
 				$contact							= get_field('contact_content', 'option');
+				$hpFooterContent 			= get_field('homepage_contact_content', 'option');
+
 				$yesToBlogPost 				= get_field('include_featured_blog_post');
 				$blogPost 						= get_field('featured_blog_post', 'option');
+
 				$yesToVideoBackground = get_field('include_video_background', 'option');
 				$videoPoster 					= get_field('video_poster', 'option');
 				$videoMP4  						= get_field('video_mp4', 'option');
 				$videoWebm 						= get_field('video_webm', 'option');
+				$contactBackground 		= get_field('contact_background', 'option');
+
+				$modalTitle 					= get_field('modal_title', 'option');
+				$modalForm 						= get_field('modal_form', 'option');
+				$modalLink 						= get_field('modal_link', 'option');
+
+				$ourExpertiseTitle 		= get_field('oe_title');
+				$ourExpertiseContent 	= get_field('oe_intro');
+
+				$obTitle 							= get_field('ob_title');
+				$obContent 						= get_field('ob_content');
+				$obImage 							= get_field('ob_image');
+				$obLink 							= get_field('ob_link');
+
 
 			// If the template includes the a blog post
 			if($yesToBlogPost) {?>
@@ -22,6 +40,12 @@
 
 				<article class="row post">
 					<div class="container">
+						<?php if(is_front_page()){ ?>
+						<div class="blog-intro">
+							<h2><?php print $ourExpertiseTitle; ?></h2>
+							<?php print $ourExpertiseContent; ?>
+						</div>
+						<?php } ?>
 						<?php if(has_post_thumbnail() ) { ?>
 						<div class="post-image">
 							<?php the_post_thumbnail(); ?>
@@ -30,12 +54,14 @@
 							<h3><?php the_title(); ?></h3>
 							<?php the_excerpt(); ?>
 							<a class="button primary" href="<?php the_permalink();?>">Continue Reading</a>
+							<a class="button secondary" href="<?php bloginfo('url'); ?>/our-expertise">View All</a>
 						</div>
 						<?php } else { ?>
 						<div class="row-padded center">
 							<h3><?php the_title(); ?></h3>
 							<?php the_excerpt(); ?>
 							<a class="button primary" href="<?php the_permalink();?>">Continue Reading</a>
+							<a class="button secondary" href="<?php bloginfo('url'); ?>/our-expertise">View All</a>
 						</div>
 						<?php } ?>
 					</div>
@@ -48,34 +74,52 @@
 			if($yesToFooter) { ?>
 
 			<section class="contact">
+				<?php if($yesToTestimonial) {
+					$testimonial 					= get_field('select_a_testimonial');
 
-				<?php if($testimonial)
-					$post = $testimonial;
-					$testimonialContent 			= get_field('content');
-					$testimonialPosition 			= get_field('position');
-					setup_postdata( $post );
-				{ ?>
+					if($testimonial != 'null')
+						$post = $testimonial;
+						$testimonialContent 			= get_field('content');
+						$testimonialPosition 			= get_field('position');
+						setup_postdata( $post );
+					{ ?>
 
-				<div class="row purple">
-					<div class="container">
-						<div class="testimonial">
-							<p class="testimonial-content"><?php echo $testimonialContent; ?></p>
-							<span class="testimonial-attribute">&mdash; <?php the_title(); ?> <?php print $testimonialPosition; ?></span>
+					<div class="row purple">
+						<div class="container">
+							<div class="testimonial">
+								<p class="testimonial-content"><?php echo $testimonialContent; ?></p>
+								<span class="testimonial-attribute">&mdash; <?php the_title(); ?> <?php print $testimonialPosition; ?></span>
+							</div>
 						</div>
 					</div>
-				</div>
 
+					<?php } ?>
 				<?php }
 				// If the contact content is filled out in the Makespace Options page
 				if($contact) { ?>
 
-				<div class="row contact-content" <?php if($videoPoster){ ?>style="background-image: url('<?php print $videoPoster; ?>');"<?php } ?>>
+				<?php if(is_front_page()){?>
+				<section class="overflow row purple no-bottom">
 					<div class="container">
-						<div class="contact-content_copy">
-							<?php print $contact; ?>
+						<div class="overflow_image">
+							<img src="<?php print $obImage; ?>" alt="<?php print $obTitle; ?>" />
+						</div>
+						<div class="overflow_content">
+							<h2><?php print $obTitle; ?></h2>
+							<?php print $obContent; ?>
+							<a class="button primary" href="<?php print $obLink; ?>">Learn More</a>
 						</div>
 					</div>
-					<?php if(yesToVideoBackground){ ?>
+				</section>
+				<?php } ?>
+
+				<div class="row contact-content <?php if($yesToVideoBackground){?> video-container <?php }?> <?php if(is_front_page()){ print 'home'; } ?>" <?php if($videoPoster){ ?>style="background-image: url('<?php print $videoPoster; ?>');"<?php } else if(!$yesToVideoBackground) { ?> style="background-image: url('<?php print $contactBackground; ?>');" <?php } ?>>
+					<div class="container">
+						<div class="contact-content_copy">
+							<?php if(is_front_page()) { print $hpFooterContent; } else { print $contact; } ?>
+						</div>
+					</div>
+					<?php if($yesToVideoBackground){ ?>
 		      <video muted autoplay loop poster="<?php if($videoPoster){print $videoPoster;} ?>">
 		      	<?php if($videoWebm) { ?><source src="<?php print $videoWebm; ?>" type='video/webm;codecs="vp8, vorbis"'><?php } ?>
 		      	<?php if($videoMP4) { ?><source src="<?php print $videoMP4; ?>" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'><?php } ?>
@@ -109,6 +153,14 @@
 				</div>
 			</section>
 		</footer>
+
+		<div class="book">
+			<button href="<?php bloginfo('url'); ?>/our-books" data-mfp-src="#book-modal" class="book-image"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_app/images/book.png" alt="Our Books"/></button>
+			<div id="book-modal" class="white-popup mfp-hide book-modal-content">
+			  <h3><?php print $modalTitle; ?></h3>
+			  <?php echo do_shortcode(''.$modalForm.''); ?>
+			 </div>
+		</div>
 		<?php wp_footer(); ?>
 	</body>
 </html>

@@ -25,21 +25,6 @@
 	.button{
 		margin-top: 3em;
 	}
-
-	video{
-		display: none;
-	}
-
-	@media screen and (min-width: 46em){
-		video{
-			display: block;
-			height: auto;
-	    left: 0;
-	    position: absolute;
-	    top: 0;
-	    width: 100%;
-		}
-	}
 }
 
 .copyright{

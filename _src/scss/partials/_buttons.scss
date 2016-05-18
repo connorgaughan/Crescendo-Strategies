@@ -19,4 +19,16 @@
 			background: $purple-faded;
 		}
 	}
+
+	&.secondary{
+		color: $gold;
+		background: $white;
+		border: 2px solid $gold;
+
+		&:hover{
+			color: $purple;
+			border: 2px solid $purple;
+			text-decoration: none;
+		}
+	}
 }

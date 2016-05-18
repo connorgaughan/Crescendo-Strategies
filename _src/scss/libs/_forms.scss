@@ -35,10 +35,12 @@ input[type="search"],
 input[type="tel"],
 select {
 	border:none;
-	padding:.5em;
+	padding:.75em;
 	width:100%;
+	border-radius: 3px;
 	background: lighten($body, 85%);
 	transition: all 350ms ease-in-out;
+	color: $body;
 
 	&:focus{
 		background:lighten($body, 95%);

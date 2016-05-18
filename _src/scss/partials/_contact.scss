@@ -1,0 +1,71 @@
+.contact-form{
+	padding-bottom: 75px;
+}
+
+.row-column{
+	@include clearfix();
+
+	h4{
+		color: $body;
+	}
+
+	&_left,
+	&_right{
+		width: 100%;
+	}
+
+	@media screen and (min-width: 46em){
+
+		&_left,
+		&_right{
+			display: block;
+			float: left;
+			width: 45%;
+			margin: 0 2.5%;
+		}
+	}
+}
+
+form{
+	@include clearfix();
+	@extend .rubik;
+	background: $purple;
+	padding: 1.5em;
+	color: $white;
+
+	.wpcf7 .wpcf7-not-valid-tip{
+		color: $white;
+	}
+
+	.submit{
+		padding: 0;
+
+		img{
+			position: absolute;
+			top: 10px;
+			roght: 10px;
+		}
+	}
+
+	.form-row div{
+		margin: 0 0 1em 0;
+	}
+
+	label{
+		@include uppercase();
+		margin: 0;
+		padding: 0 0 .25em 0;
+	}
+
+	.button{
+		display: block;
+		width: 100%;
+		padding: .75em 1.5em;
+		border-radius: 3px;
+
+		&:hover{
+			background: $white;
+			color: $purple;
+		}
+	}
+}

@@ -1,10 +1,3 @@
-<?php
-/**
- * Template Name: Blog
- * Selectable from the dropdown menu on the edit page screen.
- */
-?>
-
 <?php get_header(); ?>
 
 <?php

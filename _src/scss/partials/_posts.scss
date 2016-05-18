@@ -4,6 +4,14 @@
 
 .post{
 
+	&:nth-child(odd){
+		background: $white;
+	}
+
+	&:nth-child(even){
+		background: $purple-row;
+	}
+
 	.button{
 		margin-top: 1em;
 	}
@@ -30,4 +38,9 @@
 			width: 55%;
 		}
 	}
+}
+
+.single-post_content{
+	max-width: 980px;
+	margin: 0 auto;
 }
