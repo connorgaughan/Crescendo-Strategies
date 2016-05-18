@@ -2,7 +2,7 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	background: rgba(255,255,255, 0.2);
+	background: rgba(255,255,255, 0.6);
 	text-align: center;
 
 	h1{
@@ -19,7 +19,7 @@
 .we-are-container_cell{
 	width: 100%;
 	text-align: center;
-	padding-top: 20px;
+	padding-top: 25px;
 
 	img{
 		 display: block;
@@ -33,6 +33,7 @@
 
 		&:hover{
 			text-decoration: none;
+			color: $white;
 		}
 	}
 
@@ -61,7 +62,7 @@
 		@include transition-medium();
 	}
 
-	@media screen and (min-width: 56em){
+	@media screen and (min-width: 60em){
 
 		display: block;
 		float: left;
@@ -88,17 +89,6 @@
 
 		img{
 			height: 50px;
-		}
-
-		.hover-text{
-			opacity: 0;
-		}
-
-		&:hover{
-			.hover-text{
-				opacity: 1;
-				color: $gold;
-			}
 		}
 
 		&.white{
@@ -385,7 +375,7 @@
 
 		&_image{
 			display: block;
-			width: 45%;
+			width: 50%;
 			position: absolute;
 			left: 10px;
 			top: -20px;
@@ -393,9 +383,12 @@
 	}
 
 	@media screen and (min-width: 64em){
+		&_content{
+			width: 45%;
+		}
 		&_image{
 			display: block;
-			width: 35%;
+			width: 55%;
 			position: absolute;
 			left: 10px;
 			top: -30px;

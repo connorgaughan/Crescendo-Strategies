@@ -40,7 +40,6 @@
 		<?php } ?>
 
 		<section class="my-slider row white">
-			<div class="container">
 				<ul>
 				<?php
 					$args = array( 'post_type' => 'testimonial', 'posts_per_page' => -1 );
@@ -51,7 +50,7 @@
 					?>
 
 					<li>
-						<div class="testimonial">
+						<div class="testimonial container">
 							<p class="testimonial-content"><?php echo $hpTestimonialContent; ?></p>
 							<span class="testimonial-attribute">&mdash; <?php the_title(); ?> <?php print $hpTestimonialPosition; ?></span>
 						</div>
@@ -59,7 +58,6 @@
 
 				<?php endwhile; wp_reset_postdata(); endif; ?>
 				</ul>
-			</div>
 		</section>
 
 		<section class="row white tout <?php if($yesToVideoBackground){?> video-container <?php }?>" <?php if($videoPoster){ ?>style="background-image: url('<?php print $videoPoster; ?>');"<?php } else if(!$yesToVideoBackground) { ?> style="background-image: url('<?php print $contactBackground; ?>');" <?php } ?>>
