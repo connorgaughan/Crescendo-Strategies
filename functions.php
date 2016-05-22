@@ -24,8 +24,9 @@ $Makespace = new Makespace();
 
 function sc_button($atts, $content = null) {
 	extract( shortcode_atts( array(
-		'url' => '#'
+		'url' => '#',
+		'target' => '_self'
 	), $atts ) );
-	return '<a class="button primary" href="' . get_bloginfo('url') . '/' . $url . '">' . do_shortcode($content) . '</a>';
+	return '<a class="button primary" href="'. $url .'" target="'. $target .'">' . do_shortcode($content) . '</a>';
 }
 add_shortcode('button', 'sc_button');

@@ -24,14 +24,14 @@
 
 @media screen and (min-width: 46em){
 	.home .top{
-		height: 50vh;
+		height: 75vh;
 	}
 }
 
 
 .menu-container{
 	@include clearfix();
-	background: $purple-faded;
+	background: $purple;
 	position: relative;
 
 	.menu{
@@ -65,7 +65,7 @@
 					opacity: 0;
 					position: absolute;
 					width: 300px;
-					background: $purple-faded;
+					background: $purple;
 					@include transition-short();
 
 					li{

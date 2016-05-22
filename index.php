@@ -1,16 +1,16 @@
 <?php get_header(); ?>
 
-<?php
-	$blogTitle 		= get_field('blog_title');
-	$blogContent 	= get_Field('blog_content');
-?>
-
 	<main class="content">
 		<section class="row intro white left">
 			<div class="row-content container">
 				<?php msw_breadcrumbs(); ?>
+				<?php
+					if( get_option( 'page_for_posts' ) ) {
+						$posts_page = get_page( get_option( 'page_for_posts' ) );
+						$blogTitle = apply_filters( 'the_title', $posts_page->post_title );
+					}
+				?>
 				<h1><?php print $blogTitle; ?></h1>
-				<?php print $blogContent; ?>
 			</div>
 		</section>
 		<section class="posts">

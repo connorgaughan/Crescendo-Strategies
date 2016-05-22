@@ -67,7 +67,7 @@
 					</div>
 				</article>
 
-				<?php } ?>
+				<?php } wp_reset_postdata(); ?>
 
 			<?php }
 			// If the template includes the contact/testimonial blocks
@@ -77,7 +77,7 @@
 				<?php if($yesToTestimonial) {
 					$testimonial 					= get_field('select_a_testimonial');
 
-					if($testimonial != 'null')
+					if($testimonial)
 						$post = $testimonial;
 						$testimonialContent 			= get_field('content');
 						$testimonialPosition 			= get_field('position');
