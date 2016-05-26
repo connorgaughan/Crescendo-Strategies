@@ -1,6 +1,14 @@
 #breadcrumbs {
 	padding: 0;
 
+	a{
+		color: $purple;
+
+		&:hover{
+			color: $gold;
+		}
+	}
+
 	li{
 		@extend .rubik;
 		display: inline-block;

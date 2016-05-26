@@ -39,7 +39,7 @@
 		<header class="top" <?php if(has_post_thumbnail()){ ?> style="background-image: url('<?php echo $hero ?>')" <?php } ?> >
 			<?php if(is_front_page()) {?>
 				<div class="we-are">
-					<h1>We Are...</h1>
+					<h1>We Reduce Unnecessary Employee Turnover</h1>
 				</div>
 			<?php } ?>
 			<div class="floating">

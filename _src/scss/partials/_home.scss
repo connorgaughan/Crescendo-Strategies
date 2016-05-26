@@ -8,6 +8,11 @@
 	h1{
 		padding: 20px 0;
 		margin: 0;
+		@include rem(font-size, 2.4rem);
+
+		@media screen and (min-width: 40em){
+			@include rem(font-size, 4rem);
+		}
 	}
 }
 
@@ -339,7 +344,6 @@
 
 	h2{
 		margin-top: 0;
-		color: $teal;
 	}
 }
 

@@ -55,6 +55,10 @@
 				display: none;
 			}
 
+			.trigger:hover > a{
+				color: $white;
+			}
+
 			li{
 				display: inline-block;
 				position: relative;

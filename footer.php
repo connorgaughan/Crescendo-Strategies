@@ -151,7 +151,6 @@
 						</svg>
 					</a>
 				</div>
-				<p class="reach-out">Reach out today to see if what we do for other clients may work for your organization</p>
 			</section>
 		</footer>
 
@@ -160,6 +159,7 @@
 			<div id="book-modal" class="white-popup mfp-hide book-modal-content">
 			  <h3><?php print $modalTitle; ?></h3>
 			  <?php echo do_shortcode(''.$modalForm.''); ?>
+			  <a href="<?php echo bloginfo('url'); ?>/our-books">Rather a physical copy of the book? Get one here</a>
 			 </div>
 		</div>
 		<?php wp_footer(); ?>

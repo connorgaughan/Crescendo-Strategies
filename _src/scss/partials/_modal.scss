@@ -33,8 +33,13 @@
 	margin: 0 auto;
 	background: $purple;
 	color: $white;
+	text-align: center !important;
 
 	h3{
+		color: $white;
+	}
+
+	a{
 		color: $white;
 	}
 }
