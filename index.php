@@ -11,6 +11,21 @@
 					}
 				?>
 				<h1><?php print $blogTitle; ?></h1>
+				<div class="category-dd select-wrapper">
+					<?php wp_dropdown_categories( array(
+						'show_option_none' => is_category() ? 'View All' : 'Filter'
+					) ); ?>
+					<script type="text/javascript">
+					var dropdown = document.getElementById("cat");
+					function onCatChange() {
+						if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
+							location.href = "<?php echo esc_url( home_url( '/' ) ); ?>?cat="+dropdown.options[dropdown.selectedIndex].value;
+						} else {
+							location.href = "<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>";
+						}
+					}
+					dropdown.onchange = onCatChange;</script>
+				</div>
 			</div>
 		</section>
 		<section class="posts">

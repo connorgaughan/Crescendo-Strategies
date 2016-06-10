@@ -14,6 +14,10 @@
 	<?php
 		// Set up global call for featured images
 		$hero = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+		if(is_home()){
+			$page_for_posts = get_option( 'page_for_posts' );
+			$postHero = wp_get_attachment_url( get_post_thumbnail_id($page_for_posts) );
+		}
 	?>
 
 	<body <?php body_class(); ?>>
@@ -36,7 +40,13 @@
 				</div>
 			</div>
 		<?php endif; ?>
-		<header class="top" <?php if(has_post_thumbnail()){ ?> style="background-image: url('<?php echo $hero ?>')" <?php } ?> >
+		<header class="top"
+			<?php if(has_post_thumbnail()){ ?>
+				style="background-image: url('<?php echo $hero ?>')"
+			<?php } else if(is_home()){ ?>
+				style="background-image: url('<?php echo $postHero ?>')"
+			<?php } ?>
+		>
 			<?php if(is_front_page()) {?>
 				<div class="we-are">
 					<h1>We Reduce Unnecessary Employee Turnover</h1>
