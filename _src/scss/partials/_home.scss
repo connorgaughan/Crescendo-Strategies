@@ -397,3 +397,12 @@
 		}
 	}
 }
+
+.play-button{
+	background: url('../images/play-button.png') center center no-repeat;
+	background-size: cover;
+	display: block;
+	height: 45px;
+	width: 45px;
+	text-indent: -999999px;
+}

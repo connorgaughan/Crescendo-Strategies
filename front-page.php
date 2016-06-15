@@ -3,6 +3,7 @@
 <?php
 	$wsTitle 							= get_field('we_speak_title');
 	$wsContent 						= get_field('we_speak_content');
+	$wsLink 							= get_field('we_speak_link');
 	$wiTitle 							= get_field('wi_title');
 	$wiContent 						= get_field('wi_content');
 	$otTitle 							= get_field('our_team_title');
@@ -13,7 +14,6 @@
 	$videoMP4  						= get_field('video_mp4');
 	$videoWebm 						= get_field('video_webm');
 	$contactBackground 		= get_field('background_image');
-
 ?>
 
 
@@ -35,29 +35,73 @@
 						<p class="hover-text">Learn More</p>
 					</a>
 				</div>
-			<?php endwhile; ?>
+			<?php endwhile; wp_reset_postdata(); ?>
 		</div>
 		<?php } ?>
 
 		<section class="my-slider row white">
+				<?php if( have_rows('slide') ) { ?>
 				<ul>
-				<?php
-					$args = array( 'post_type' => 'testimonial', 'posts_per_page' => -1 );
-					$loop = new WP_Query( $args );
-					if ($loop->have_posts()) : while ( $loop->have_posts() ) : $loop->the_post();
-					$hpTestimonialContent 			= get_field('content');
-					$hpTestimonialPosition 			= get_field('position');
-					?>
+					<?php while ( have_rows('slide') ) : the_row(); ?>
+						<?php
+							// Carousel Content
+							$yesToTestimonial 		= get_sub_field('testimonial');
+							$testimonial 					= get_sub_field('select_a_testimonial');
+							$testimonialImage     = get_sub_field('testimonial_image');
 
-					<li>
-						<div class="testimonial container">
-							<p class="testimonial-content"><?php echo $hpTestimonialContent; ?></p>
-							<span class="testimonial-attribute">&mdash; <?php the_title(); ?> <?php print $hpTestimonialPosition; ?></span>
-						</div>
-					</li>
+							$yesToCustom			 		= get_sub_field('custom_content');
+							$customContent 				= get_sub_field('custom_content_copy');
+							$customImage     			= get_sub_field('custom_content_image');
+						?>
+						<li>
+							<div class="testimonial container">
+							<?php if($yesToTestimonial) {
 
-				<?php endwhile; wp_reset_postdata(); endif; ?>
+								if($testimonial)
+									$post = $testimonial;
+									$testimonialContent 			= get_field('content');
+									$testimonialPosition 			= get_field('position');
+									setup_postdata( $post );
+								{ ?>
+
+									<?php if($testimonialImage){ ?>
+										<div class="flex">
+											<div class="image">
+												<img src="<?php print $testimonialImage; ?>" />
+											</div>
+											<div class="content">
+												<p class="testimonial-content"><?php echo $testimonialContent; ?></p>
+												<span class="testimonial-attribute">&mdash; <?php the_title(); ?> <?php print $testimonialPosition; ?></span>
+											</div>
+										</div>
+									<?php } else { ?>
+
+										<p class="testimonial-content"><?php echo $testimonialContent; ?></p>
+										<span class="testimonial-attribute">&mdash; <?php the_title(); ?> <?php print $testimonialPosition; ?></span>
+									<?php } ?>
+								<?php } wp_reset_postdata(); ?>
+
+							<?php } if($yesToCustom){ ?>
+
+								<?php if($customImage){ ?>
+									<div class="flex">
+										<div class="image">
+											<img src="<?php print $customImage; ?>" />
+										</div>
+										<div class="content">
+											<?php print $customContent; ?>
+										</div>
+									</div>
+								<?php } else { ?>
+									<?php print $customContent; ?>
+								<?php } ?>
+
+							<?php } ?>
+							</div>
+						</li>
+					<?php endwhile; ?>
 				</ul>
+				<?php } ?>
 		</section>
 
 		<section class="row white tout <?php if($yesToVideoBackground){?> video-container <?php }?>" <?php if($videoPoster){ ?>style="background-image: url('<?php print $videoPoster; ?>');"<?php } else if(!$yesToVideoBackground) { ?> style="background-image: url('<?php print $contactBackground; ?>');" <?php } ?>>
@@ -65,6 +109,7 @@
 				<div class="ws-intro">
 					<h2><?php print $wsTitle; ?></h2>
 					<?php print $wsContent; ?>
+					<a class="play-button" href="<?php print $wsLink; ?>#video">Watch Video</a>
 				</div>
 
 				<?php if( have_rows('we_speak_logo') ) { ?>
@@ -79,6 +124,7 @@
 					<?php endwhile; ?>
 				</ul>
 				<?php } ?>
+
 			</div>
 			<?php if($yesToVideoBackground){ ?>
 	      <video muted autoplay loop poster="<?php if($videoPoster){print $videoPoster;} ?>">

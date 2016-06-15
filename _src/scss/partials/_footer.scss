@@ -39,6 +39,14 @@
 		padding-top: 10px;
 	}
 
+	.social-links{
+		ul{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+	}
+
 	#makespace-bee{
 		display: block;
 		margin: 0 auto;
@@ -71,6 +79,15 @@
 					color: $white;
 					display: inline-block;
 					padding: 0 5px;
+				}
+			}
+
+			&#menu-social-links{
+				li:first-child{
+					padding-right: 0;
+					&:after{
+						display: inline-block;
+					}
 				}
 			}
 		}

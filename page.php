@@ -53,7 +53,7 @@
 
 			<section class="row <?php print $rowColorClass; ?> <?php print $rowAlignmentClass; ?> <?php if($yesToVideo){ print 'video'; } ?>">
 				<?php if($yesToVideo) { ?>
-					<div class="row-content container">
+					<div class="row-content container" id="video">
 						<button class="video-toggle" href="http://www.youtube.com/watch?v=<?php print $youtubeId; ?>">
 							<img src="http://img.youtube.com/vi/<?php print $youtubeId; ?>/maxresdefault.jpg" />
 						</button>

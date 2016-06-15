@@ -1,6 +1,23 @@
 (function($){
 
 	$(document).ready(function() {
+
+    var $window = $(window);
+
+    $window.scroll(function() {
+      var scrollTop = $window.scrollTop();
+      console.log(scrollTop);
+      if (scrollTop > 10) {
+        $('.logo').addClass('scale');
+        $('.floating').css('top', -25 + 'px');
+        $('.menu-container').css('top', -15 + 'px');
+      } else if (scrollTop < 10 ){
+        $('.logo').removeClass('scale');
+        $('.floating').css('top', 0);
+        $('.menu-container').css('top', 0);
+      }
+    });
+
     $('.video-toggle').magnificPopup({
       disableOn: 700,
       type: 'iframe',
@@ -14,7 +31,7 @@
       autoplay: true,
       infinite: true,
       delay: '6000',
-      animateHight: true
+      animateHeight: true
     });
 
     $('.book-image').magnificPopup({

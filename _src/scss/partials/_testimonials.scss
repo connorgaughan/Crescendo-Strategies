@@ -8,4 +8,27 @@
 	&-content{
 		@include rem(font-size, 2.4rem);
 	}
+
+	@media screen and (min-width:36em){
+		.flex{
+			display: flex;
+			align-items: center;
+		}
+
+		.image,
+		.content{
+			display: block;
+			float: left;
+		}
+
+		.image{
+			width: 33.3333333333%;
+		}
+
+		.content{
+			width: 66.6666666666%;
+			vertical-align: middle;
+			@include rem(font-size, 2.4rem);
+		}
+	}
 }

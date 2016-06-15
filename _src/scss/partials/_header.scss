@@ -6,7 +6,20 @@
 	display: block;
 	top: 0;
 	width: 100%;
-	z-index: 1000;
+	z-index: 1100;
+	@include transition-medium();
+}
+
+.logo img{
+	@include transition-medium();
+}
+
+.logo.scale img{
+	transform: scale(.75, .75);
+}
+
+.menu-container{
+	@include transition-medium();
 }
 
 .top{
@@ -45,8 +58,8 @@
 			}
 		}
 
-
 		@media screen and (min-width: 56em){
+
 			display: block;
 			list-style-type: none;
 			text-align: center;
@@ -121,6 +134,50 @@
 			}
 		}
 
+		.mega-menu{
+			position: inherit;
+
+			&:hover ul {
+				display: flex;
+				width: 100%;
+				left: 0;
+
+				li{
+					display: block;
+					float: left;
+					text-align: center;
+
+					a:before{
+						content: '';
+						display: block;
+						height: 90px;
+						width: 90px;
+						margin: 0 auto;
+					}
+				}
+
+				.gathering a:before{
+					background: url('../images/mega-gathering.png') center center no-repeat;
+					background-size: cover;
+				}
+
+				.bridging a:before{
+					background: url('../images/mega-bridging.png') center center no-repeat;
+					background-size: cover;
+				}
+
+				.creating a:before{
+					background: url('../images/mega-creating.png') center center no-repeat;
+					background-size: cover;
+				}
+
+				.workforce a:before{
+					background: url('../images/mega-workforce.png') center center no-repeat;
+					background-size: cover;
+				}
+			}
+		}
+
 		@media screen and (min-width:70em){
 			.telephone{
 				display: inline-block;
@@ -161,5 +218,17 @@
 
 	@media screen and (min-width:56em){
 		display: none;
+	}
+}
+
+.jquery{
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	width: 0;
+
+	@media screen and (min-width:56em){
+		display: block;
 	}
 }
